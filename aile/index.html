@@ -240,7 +240,9 @@ var canvas, gl, program,
 		if(s>slides.length) return slides.length;
 		return s; }
 	function gotoSlide(s) {
+	alert(s);
 		s = slideValidate(s);
+	alert(s);
 		if(!isDraw && s!=slide) draw();
 		location.hash = slide = s; }
 	window.onload = window.onhashchange = function() {
@@ -251,6 +253,7 @@ var canvas, gl, program,
 		var n = -1; while(++n<slides.length)
 			slides[n].style.cssText = n==slide-1?'':'display:none'; }
 	window.onclick = function(e) {
+	alert('click');
 		gotoSlide((window.event || e).clientY > window.innerHeight / 2? slide+1 : slide-1); }
 	window.onkeydown = function(e) {
 		e = window.event || e;
