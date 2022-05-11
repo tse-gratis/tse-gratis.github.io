@@ -241,7 +241,7 @@ var canvas, gl, program,
 		return s; }
 	function gotoSlide(s) {
 		s = slideValidate(s);
-		if(!isDraw && s!=slide) draw();
+		//if(!isDraw && s!=slide) draw();
 		location.hash = slide = s; }
 	window.onload = window.onhashchange = function() {
 		var hash = location.hash; var s = 0;
