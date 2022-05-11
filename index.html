@@ -26,9 +26,9 @@ canvas     { display:block; position:fixed; top:0px; left:0px; z-index:-9999; }
 
 .middle { width:900px; margin:0px auto; }
 .middle div, .middle code {
-	background-color:rgba(255,255,255,0.44);
+	background-color:rgba(255,255,255,0.50);
 	backdrop-filter: blur(4px);
-	font-size:150%;
+	font-size:175%;
 	float:left;
 	clear:both;
 	margin:14px;
@@ -46,7 +46,7 @@ div.right { float:right; }
 @media (max-width:899px) { .middle { width:734px; } }
 
 h1, h2, h3 {
-	font-size:290%; font-weight:normal;
+	font-size:310%; font-weight:normal;
 	margin:0px; padding:14px 0 0 0; text-align:center; clear:both; }
 
 table {
@@ -111,7 +111,7 @@ I canceled a trip to the north, incase the rebels came.<s> </s>But I went to the
 The rebels were more active in the east a few days ago.<s> </s>And it looked like they might come here.<s> </s>Some people I trust from Switzerland included me in their evacuation plans, and they act from past experience.<s> </s>But there’s been no new fighting for the last 2 days.<s> </s>So we no longer expect them.<s> </s>But if they do come, I’ll email you again when I reach the home
 <br/><br/>
 <sub>2008</sub>
-</div>
+</div></div>
 <h1>Joy in Prison</h1>
 <div class="middle">
 <div><span class="dropCap">M</span>y friend’s nephew was trying to break down the front door with a knife, screaming<s> </s>“I’m going to kill you.”<s> </s>His nephew had joined a terrorist group, and this was the answer to my friend becoming Christian
@@ -274,7 +274,7 @@ var canvas, gl, program,
 	iTime       = gl.getUniformLocation(program, "iTime");
 
 
-	var totalEase = 1.0, isScrolled = false, isDraw = true, startTime = 0;
+	var totalEase = 18.75, isScrolled = false, isDraw = true, startTime = 0;
 	function easeOut(t, b, c, d) {
 		return -c * ((t = t / d - 1) * t * t * t - 1) + b; }
 	function draw(time) {
