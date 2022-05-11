@@ -59,7 +59,7 @@ table.ui {
 </style></head><body>
 
 <div class="slide">
-	<h1><big>1.</big> Authentic brandx</h1>
+	<h1><big>1.</big> Authentic brand</h1>
 	<p>Being the beloved</p></div>
 
 <div class="slide">
@@ -171,7 +171,7 @@ var canvas, gl, program,
 		if(gl.getProgramParameter(program, gl.LINK_STATUS)) return program;
 		console.log(gl.getProgramInfoLog(program));
 		gl.deleteProgram(program); }
-	canvas = document.getElementsByClassName("backgroundShader")[0];
+	/*canvas = document.getElementsByClassName("backgroundShader")[0];
 	gl = canvas.getContext("webgl");
 	program = createProgram(gl,
 		createShader(gl, gl.VERTEX_SHADER, 'attribute vec4 pos; uniform vec2 iResolution; uniform float iTime; void main() { gl_Position = pos; }'),
@@ -210,7 +210,7 @@ var canvas, gl, program,
 		else if(h<w*0.5) h = w*0.5;
 		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
 		gl.uniform2fv(iResolution, [w, h]);
-		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); }
+		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); }*/
 	/*window.onresize = wh;
 	window.onscroll = function() { isScrolled = true; if(!isDraw) draw(); }
 	wh();
