@@ -1,0 +1,259 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>
+	home
+</title>
+<link rel="icon" href="https://gratis.gitlab.io/heart-16.ico" sizes="16x16">
+<link rel="icon" href="https://gratis.gitlab.io/heart-32.ico" sizes="32x32">
+<meta http-equiv="imagetoolbar" content="no">
+<meta name="viewport" content="width=928">
+<style>
+@import url(https://fonts.googleapis.com/css?family=Averia+Serif+Libre:300,400italic);
+html, body { margin:0px; font-family:'Averia Serif Libre', Georgia, serif; word-spacing:110%; }
+canvas     { display:block; position:fixed; top:0px; left:0px; z-index:-9999; }
+
+.cards { width:1468px; margin:0px auto; padding:60px 7px; }
+.card {
+	display:block; float:left; width:345px; height:300px;
+	margin:7px; padding:4px;
+	font-size:150%; border-radius:1ex;
+	background-color:rgba(255,255,255,0.33);
+	backdrop-filter: blur(4px);
+	text-decoration:none; color:inherit; }
+.card:hover {
+	margin:5px; padding:6px;
+	background-color:rgba(255,255,255,0.55); }
+.card big { display:block; width:345px; height:200px; border-radius:0.5ex; }
+
+.middle { width:900px; margin:0px auto; }
+.middle div, .middle code {
+	background-color:rgba(255,255,255,0.44);
+	backdrop-filter: blur(4px);
+	font-size:150%;
+	float:left;
+	clear:both;
+	margin:14px;
+	padding:14px; border-radius:1ex; }
+/* simple aside formating, can remove these */
+div.right { float:right; }
+.aside { width:345px; }
+
+/* media queries dont account for scrollbar unless we correct them with js...
+   but just ignore this as it is a small issue */
+/* possibly we want phone viewing mode to
+   take  .middle div  to the edge without curved corners,
+   so that reading is clearer, but test on phones first */
+@media (max-width:1485px) { .cards { width:734px; padding:7px; } }
+@media (max-width:899px) { .middle { width:734px; } }
+
+h1, h2, h3 {
+	font-size:290%; font-weight:normal;
+	margin:0px; padding:14px 0 0 0; text-align:center; clear:both; }
+
+table {
+	border-collapse:collapse;
+	border-spacing:0px; }
+td { vertical-align:baseline; }
+ul { list-style:none; }
+a img, a .img { border:none; }
+a:hover { text-shadow:0px 0px 3px #999; }
+
+.dropCap {
+  font-size:290%; line-height:0.8em;
+  float:left; margin-left:-1ex;
+  margin-right:2px }
+.quote { color:#555 }
+u, s { text-decoration:none; word-spacing:0.5em }
+u { word-spacing:0.25em }
+</style></head><body>
+
+<h1>sub sahara</h1>
+<div><span class="dropCap">A</span> guy here felt called to pray in various towns.<s> </s>So he’s left to do it, even though he doesn’t have the money and doesn’t think it will be safe.<s> </s>He had just come from Nigeria by bus.<s> </s>He paid for the trip, and went to get a bite.<s> </s>But then the bus filled up, so they unloaded his bags, and left without him.<s> </s>He lost his money.<s> </s>But when he eventually got here, he found the same people just sitting around: an armed gang had waylaid them and cleaned them out.<s> </s>So he thanks God for his protection
+<br/><br/>
+IMG_BG(womenAid.jpg, 330, 248,,imgRight)But things don’t happen like I expect here.<s> </s>I was throwing up bile last week, a novel experience.<s> </s>And a guy who lives with me asked his supporters in Zambia to pray about it.<s> </s>He said it was a real challenge and blessing to them that a foreigner was here and throwing up.<s> </s>I’m not sure that’s quite how I intended to bless people...
+<br/><br/>
+But this guy used to be a successful drug dealer, and was never caught.<s> </s>So I wont give any pictures of him.<s> </s>He prays about everything he does, and is working with a partner on projects that sometimes seem impossible.<s> </s>Though the partner has decided not to return, because of the war
+<br/><br/>
+We went around to a friend from Nigeria, and said:<s> </s>“We really need your prayers, because our landlord is forcing us out of the house and we have nowhere to go.”<s> </s>We didn’t have a lot of faith, since houses are hard to get here.<s> </s>Our friend responded “Wow &mdash; this is an answer to prayer.”<s> </s>We had been digging our house out after the rain, and trying to stop it falling down.<s> </s>On seeing this our friend had been close to forcing us out himself, and said “If God can answer my prayers to kick you out;<s> </s>he can easily find you another house.”
+<br/><br/>
+It’s still a big issue though, as we haven’t yet found one
+<br/><br/>
+I canceled a trip to the north, incase the rebels came.<s> </s>But I went to the east a few weeks ago.<s> </s>And it pushed me to think:<s> </s>“Somebody would have to be crazy to come here.”<s> </s>I’ve found life harder than I expected, and even simple things difficult to do.<s> </s>Like cooking tea in the dark.<s> </s>These things teach me my strength has to come from God.<s> </s>Though I’ve spent some of the last few weeks resting, mostly due to sickness and heat stress
+<br/><br/>
+The rebels were more active in the east a few days ago.<s> </s>And it looked like they might come here.<s> </s>Some people I trust from Switzerland included me in their evacuation plans, and they act from past experience.<s> </s>But there’s been no new fighting for the last 2 days.<s> </s>So we no longer expect them.<s> </s>But if they do come, I’ll email you again when I reach the home
+<br/><br/>
+<sub>2008</sub>
+</div>
+<canvas class="backgroundShader" width="0" height="0"></canvas>
+<script class="fragmentShader" type="notjs">
+precision lowp float;
+uniform vec2 iResolution;
+uniform float iTime;
+
+// this shader is based on great work by Victor Shepardson
+// https://www.shadertoy.com/user/victor_shepardson
+// it was unlicensed but elsewhere he requires attribution
+const float pi = 3.14159;
+float sigmoid(float x) { return x/(1.+abs(x)); }
+float iter(vec2 p, vec4 a, vec4 wt, vec4 ws, float t, float m, float stereo) {
+	float wp = .2;
+	vec4 phase = vec4(mod(t, wp), mod(t+wp*.25, wp), mod(t+wp*.5, wp), mod(t+wp*.75, wp))/wp;
+	float zoom = 1./(1.+.5*(p.x*p.x+p.y*p.y));
+	vec4 scale = zoom*pow(vec4(2.), -4.*phase);
+	vec4 ms = .5-.5*cos(2.*pi*phase);
+	vec4 pan = stereo/scale*(1.-phase)*(1.-phase);
+	vec4 v = ms*sin( wt*(t+m) + (m+ws*scale)*((p.x+pan) * cos((t+m)*a) + p.y * sin((t+m)*a)));
+	return sigmoid(v.x+v.y+v.z+v.w+m); }
+vec3 scene(float gt, vec2 uv, vec4 a0, vec4 wt0, vec4 ws0, float blur) {
+	//time modulation
+	float tm = mod(.0411*gt, 1.);
+	tm = sin(2.*pi*tm*tm);
+	float t = (.04*gt + .05*tm);
+	
+	float stereo = 1.*(sigmoid(2.*(sin(1.325*t*cos(.5*t))+sin(-.7*t*sin(.77*t)))));
+	//also apply spatial offset
+	uv+= .5*sin(.33*t)*vec2(cos(t), sin(t));
+	//wildly iterate and divide
+	float p0 = iter(uv, a0, wt0, ws0, t, 0., stereo);
+	float p1 = iter(uv, a0, wt0, ws0, t, p0, stereo);
+	float p2 = sigmoid(p0/(p1+blur));
+	float p3 = iter(uv, a0, wt0, ws0, t, p2, stereo);
+	float p4 = sigmoid(p3/(p2+blur));
+	float p5 = iter(uv, a0, wt0, ws0, t, p4, stereo);
+	float p6 = sigmoid(p4/(p5+blur));
+	float p7 = iter(uv, a0, wt0, ws0, t, p6, stereo);
+	float p8 = sigmoid(p4/(p2+blur));
+	float p9 = sigmoid(p8/(p7+blur));
+	float p10 = iter(uv, a0, wt0, ws0, t, p8, stereo);
+	float p11 = iter(uv, a0, wt0, ws0, t, p9, stereo);
+	float p12 = sigmoid(p11/(p10+blur));
+	float p13 = iter(uv, a0, wt0, ws0, t, p12, stereo);
+	
+	//colors
+	vec3 accent_color = vec3(0.9,0.7,1);
+	float r = sigmoid(p0+p1+p5+p7+p10+p11+p13);
+	float g = sigmoid(p0-p1+p3+p7+p10+p11);
+	float b = sigmoid(p0+p1+p3+p5+p11+p13);
+	
+	vec3 c = max(vec3(0.8,0.7,0.9), .8+.5*vec3(r,g,b));
+	
+	float eps = .4;
+	float canary = min(abs(p1), abs(p2));
+	canary = min(canary, abs(p5));
+	//canary = min(canary, abs(p6));
+	canary = min(canary, abs(p7));
+	canary = min(canary, abs(p10));
+	float m = max(0.,eps-canary)/eps;
+	m = sigmoid((m-.5)*700./(1.+10.*blur))*.5+.5;
+	//m = m*m*m*m*m*m*m*m*m*m;
+	vec3 m3 = m*(1.-accent_color);
+	c *= .8*(1.-m3)+.3;
+	return c; }
+
+void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+	float s = min(iResolution.x, iResolution.y);
+  	vec2 uv = (2.*fragCoord.xy - vec2(iResolution.xy)) / s;
+	float blur = .5*(uv.x*uv.x+uv.y*uv.y);
+	
+	//angular, spatial and temporal frequencies
+	vec4 a0 = pi*vec4(.1, -.11, .111, -.1111); 
+	vec4 wt0 = 2.*pi*vec4(1.3);
+	vec4 ws0 = 2.5*vec4(11., 13., 11., 5.);
+
+	//aa and motion blur
+	float mb = 1.;
+	float t = 10.+iTime;
+	vec3 c = scene(t, uv, a0, wt0, ws0, blur)
+		+ scene(t-mb*.00185, uv+(1.+blur)*vec2(.66/s, 0.), a0, wt0, ws0, blur)
+		+ scene(t-mb*.00370, uv+(1.+blur)*vec2(-.66/s, 0.), a0, wt0, ws0, blur)
+		+ scene(t-mb*.00555, uv+(1.+blur)*vec2(0., .66/s), a0, wt0, ws0, blur)
+		+ scene(t-mb*.00741, uv+(1.+blur)*vec2(0., -.66/s), a0, wt0, ws0, blur)
+		+ scene(t-mb*.00926, uv+(1.+blur)*vec2(.5/s, .5/s), a0, wt0, ws0, blur)
+		+ scene(t-mb*.01111, uv+(1.+blur)*vec2(-.5/s, .5/s), a0, wt0, ws0, blur)
+		+ scene(t-mb*.01296, uv+(1.+blur)*vec2(-.5/s, -.5/s), a0, wt0, ws0, blur)
+		+ scene(t-mb*.01481, uv+(1.+blur)*vec2(.5/s, -.5/s), a0, wt0, ws0, blur);
+	c/=9.;
+	fragColor = vec4(c,1.0); }
+
+void main() { mainImage(gl_FragColor, gl_FragCoord.xy); }
+</script>
+
+<script>
+"use strict";
+var canvas, gl, program,
+    iResolution, iTime;
+(function() {
+	function createShader(gl, type, source) {
+		var shader = gl.createShader(type);
+		gl.shaderSource(shader, source);
+		gl.compileShader(shader);
+		if(gl.getShaderParameter(shader, gl.COMPILE_STATUS)) return shader;
+		console.log(gl.getShaderInfoLog(shader));
+		gl.deleteShader(shader); }
+	function createProgram(gl, vertexShader, fragmentShader) {
+		try {
+			var program = gl.createProgram();
+			gl.attachShader(program, vertexShader);
+			gl.attachShader(program, fragmentShader);
+	  } catch(e) { console.log(e); return; }
+		gl.linkProgram(program);
+		if(gl.getProgramParameter(program, gl.LINK_STATUS)) return program;
+		console.log(gl.getProgramInfoLog(program));
+		gl.deleteProgram(program); }
+	canvas = document.getElementsByClassName("backgroundShader")[0];
+	gl = canvas.getContext("webgl");
+	program = createProgram(gl,
+		createShader(gl, gl.VERTEX_SHADER, 'attribute vec4 pos; uniform vec2 iResolution; uniform float iTime; void main() { gl_Position = pos; }'),
+		createShader(gl, gl.FRAGMENT_SHADER, document.getElementsByClassName("fragmentShader")[0].text));
+	if(!program) return;
+	gl.useProgram(program);
+
+	gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1]), gl.STATIC_DRAW);
+	var positionAttr = gl.getAttribLocation(program, "pos");
+	gl.vertexAttribPointer(positionAttr, 2, gl.FLOAT, false, 0, 0);
+	gl.enableVertexAttribArray(positionAttr);
+	iResolution = gl.getUniformLocation(program, "iResolution");
+	iTime       = gl.getUniformLocation(program, "iTime");
+
+
+	var totalEase = 1.0, isScrolled = false, isDraw = true, startTime = 0;
+	function easeOut(t, b, c, d) {
+		return -c * ((t = t / d - 1) * t * t * t - 1) + b; }
+	function draw(time) {
+		if(!time) time = (window.performance || Date).now();
+		if(!startTime) startTime = time;
+		var diff = time - startTime;
+		if(isScrolled || diff>=500) {
+			isScrolled = false;
+			totalEase += easeOut(diff, 0, 0.025, 500);
+			if(diff>=500) { isDraw = false; startTime = 0; return; }
+			startTime = time; diff = 0; }
+		isDraw = true;
+		gl.uniform1f(iTime, totalEase+easeOut(diff, 0, 0.025, 500));
+		gl.drawArrays(gl.TRIANGLES, 0, 6);
+		requestAnimationFrame(draw); }
+	function wh() {
+		var w = window.innerWidth, h = window.innerHeight;
+		     if(w<h*1.5) w = h*1.5;
+		else if(h<w*0.5) h = w*0.5;
+		//if(w<h*2) w = h*2;
+		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
+		gl.uniform2fv(iResolution, [w, h]);
+		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); }
+	window.onresize = wh;
+	window.onscroll = function() { isScrolled = true; if(!isDraw) draw(); }
+	wh();
+	(function initialdraw(time) {
+		if(!time) time = (window.performance || Date).now();
+		if(!startTime) startTime = time;
+		var diff = time - startTime;
+		if(diff>500) {
+			isDraw = false;
+			totalEase+=0.10;
+			startTime = 0; diff = 0;
+			return; }
+		gl.uniform1f(iTime, totalEase+easeOut(diff, 0, 0.10, 500));
+		gl.drawArrays(gl.TRIANGLES, 0, 6);
+		requestAnimationFrame(initialdraw); })();
+	})();
+</script></body></html>

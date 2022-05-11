@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="tr"><head>
+<meta charset="utf-8"/>
+<title>Gitar Öğren</title>
+<!--
+l *.m4a | sed 's/\(.*\)\.m4a/\1/' | xargs -I % sh -c 'ffmpeg -i "%.m4a" "%.wav"; lame "%.wav" "%.mp3"; rm "%.wav"'
+# overwrites ..
+l *.jpg | grep --invert-match 'wood\(_edge\)\?\.jpg' | xargs -I % convert "%" -contrast -modulate 105,80,5 "_%"
+-->
+<!--<link rel="icon" href="https://gratis.gitlab.io/favicon-96.ico" sizes="96x96">-->
+<link rel="icon" href="https://gratis.gitlab.io/favicon-16.ico" sizes="16x16">
+<link rel="icon" href="https://gratis.gitlab.io/favicon-32.ico" sizes="32x32">
+	<meta http-equiv="imagetoolbar" content="no">
+<link rel="apple-touch-icon" href="https://gratis.gitlab.io/gitar/gitar_child.png">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="viewport" class="viewport" content="width=640, user-scalable=no"/>
+<style>
+html, body {
+	margin:0px; padding:0px; width:100%; height:100%;
+	position: fixed; overflow: hidden;
+	text-shadow:2px 2px 3px #fff,
+	            2px -2px 3px #fff,
+	            -2px 2px 3px #fff,
+	            -2px -2px 3px #fff;
+	font-weight:bold; color:#061567 }
+.ui .active span, .songs .active b { text-decoration:underline }
+.active u { background-color:#061567; color:white;
+	text-shadow:0px 0px 12px #fff, 0px 0px 6px #fff; text-decoration:none }
+
+a:hover { cursor:pointer }
+a:hover b { text-decoration:underline }
+.songs { overflow-y:auto; overflow-x:hidden; max-height:100%; padding:10px 0px }
+.songs i { font-style:normal; font-size:85%; text-align:center; display:inline-block; width:2ex }
+.songs a { font-size:120% }
+.songs u { padding:0px 5px }
+.songs div { padding:10px }
+.songs audio { display:none }
+.songs.hide i, .songs.hide b { visibility:hidden; width:0px; }
+
+.wood, .edge, .wood img { width:100%; height:100%; z-index:-1; float:right }
+.wood { position:absolute; right:0px; top:0px }
+@media (min-aspect-ratio:1/1) {
+	.wood {
+		background:url(https://gratis.gitlab.io/gitar/wood.jpg) repeat-x right top;
+		background-position:right 124px top;
+		background-size:contain }
+	.wood img.wood_edge { width:auto }
+	.wood img.image { width:auto } }
+
+body .ui { font-size:160%; font-variant:small-caps; padding:5px 0 5px 5px }
+.ui, .songs { width:100% }
+.ui a { padding:0px 20px }
+</style><body>
+<iframe class="download" style="display:none"></iframe>
+<div class="wood"/><div class="edge"><img class="image"/><img class="wood_edge" src="https://gratis.gitlab.io/gitar/wood_edge.jpg"/></div></div>
+<div class="ui"><a style="padding-left:0px"><u>Y</u><span>avaş</span></a><a class="active"><u>B</u><span>ir-kez</span></a><a ><u>T</u><span>ekrar</span></a><a ><u>S</u><span>akla</span></a></div>
+<div class="songs">
+	<a><audio src="https://gratis.gitlab.io/gitar/e.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">1</u> <i>▸</i> <b>E</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/akorlar_m.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">2</u> <i>▸</i> <b>Akorlar - minör</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/akorlar_m7.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">3</u> <i>▸</i> <b>Akorlar - minör 7</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/akorlar_M.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">4</u> <i>▸</i> <b>Akorlar - Majör</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/akorlar_M7.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">5</u> <i>▸</i> <b>Akorlar - Majör 7</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/akorlar_M9.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">6</u> <i>▸</i> <b>Akorlar - Majör 9</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/akorlar_4.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">7</u> <i>▸</i> <b>Akorlar - Sus 4</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/Imanuel.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">8</u> <i>▸</i> <b>İmanuel</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/bir_nehir_var_ki.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">9</u> <i>▸</i> <b>Bir nehir var ki</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/kadosh.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">10</u> <i>▸</i> <b>Kadosh</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/sen_layIksIn_herSeye.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">11</u> <i>▸</i> <b>Sen layıksın herşeye</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/canIm_Over.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">12</u> <i>▸</i> <b>Canım över</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/gOrmek_istiyorum.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">13</u> <i>▸</i> <b>Görmek istiyorum</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/bIrakmazsIn.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">14</u> <i>▸</i> <b>Bırakmazsın</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/burdayIm_senin_iCin.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">15</u> <i>▸</i> <b>Bur’dayım senin icin</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/uzaklaSmama.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">16</u> <i>▸</i> <b>Uzaklaşmama</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/asla_bIrakmazsIn.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">17</u> <i>▸</i> <b>Asla bırakmazsın</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/varlIGInI_seviyorum.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">18</u> <i>▸</i> <b>Varlığını Seviyorum</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/yahve_yire.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">19</u> <i>▸</i> <b>Yahve Yire</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/durmayIn.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">20</u> <i>▸</i> <b>Durmayın</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/yak_bende_ateSini.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">21</u> <i>▸</i> <b>Yak bende ateşini</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/yahve_kutsaldIr_adIn.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">22</u> <i>▸</i> <b>Yahve kustaldır adın</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/her_Seyin_kaynaGI.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">23</u> <i>▸</i> <b>Her şeyin kaynağı</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+	<a><audio src="https://gratis.gitlab.io/gitar/daha_derin_senle.mp3" preload="none"></audio>
+		<u style="display:inline-block;width:2ex">24</u> <i>▸</i> <b>Daha derin senle</b><i style="visibility:hidden">▸</i></a>
+	<div></div>
+<!-- extend .songs so fully scrolls with height:100% -->
+<div></div>
+<div></div>
+<div></div>
+<div class="ui"></div>
+</div>
+
+
+<script>
+var songsBox = document.getElementsByClassName('songs')[0];
+var image    = document.getElementsByClassName('image')[0];
+var download = document.getElementsByClassName('download')[0];
+var songs    =
+	document.getElementsByClassName('songs')[0].getElementsByTagName('a');
+var n = songs.length; while(n--) {
+	(function(song) {
+		song.onclick = function() { playAudio(song, true); return false; }; })(songs[n]); }
+var activeSong = songs[0];
+var uis      =
+	document.getElementsByClassName('ui')[0].getElementsByTagName('a');
+var ui_state;
+function highlightUI(n) {
+	if(n==3) { // ui sakla
+		if(songsBox.className=='songs') {
+			uis[3].className = 'active'; songsBox.className = 'songs hide'; }
+		else {
+			uis[3].className = '';       songsBox.className = 'songs'; }
+		return; }
+	ui_state = n;
+	var o = uis.length-1;/*-1 to skip sakla*/ while(o--) uis[o].className = o==n?'active':'';
+	if(!activeSong.getElementsByTagName('audio')[0].paused) {
+		playAudio(activeSong, false);
+		playAudio(activeSong, false); } }
+uis[0].onclick = function() { highlightUI(0); }
+uis[1].onclick = function() { highlightUI(1); }
+uis[2].onclick = function() { highlightUI(2); }
+uis[3].onclick = function() { highlightUI(3); }
+
+function playAudio(song, restartAudio) {
+	song.className = 'active';
+	var audio = song.getElementsByTagName('audio')[0];
+	switch(ui_state) {
+	case 0: audio.loop = false; audio.playbackRate = 0.8; break; // yavaş
+	case 1: audio.loop = false; audio.playbackRate = 1;   break; // bir-kez
+	case 2: audio.loop = true;  audio.playbackRate = 1;   break; // tekrar
+	case 3: break; }
+	image.src = audio.src.replace(/\.mp3$/, ".jpg");
+	// reset previous song
+	if(activeSong!=song) {
+		activeSong.className = '';
+		activeSong.getElementsByTagName('i')[0].innerHTML = '▸' ;
+		var activeAudio = activeSong.getElementsByTagName('audio')[0];
+		activeAudio.oncanplay = undefined;
+		activeAudio.pause(); }
+	activeSong = song;
+	if(restartAudio) { audio.currentTime = 0; if(audio.paused) window.onresize(); }
+	// possible readyState race, but avoids 'promise' exceptions for unplayable tracks
+	var playpause = function() {
+		// update current song
+		var key = song.getElementsByTagName('i')[0]
+		key.innerHTML = audio.paused?'>':'▸';
+		if(audio.paused) audio.play(); else audio.pause();
+		audio.oncanplay = undefined;
+		audio.onended = function() { key.innerHTML = '▸'}; };
+	if(audio.readyState > 0) playpause();
+	else { audio.oncanplay = playpause; audio.load(); } }
+
+// convert digit keypresses to song number
+var dDate;
+var dNumber = '';
+var dDelay = 300;
+function dComplete() {
+	if(dNumber=='') return;
+	if(+new Date() < dDate + dDelay)
+		return setTimeout(dComplete, (dDate+dDelay)- +new Date());
+	dNumber = parseInt(dNumber, 10)-1;
+	if(dNumber < 0) dNumber = 0;
+	if(dNumber >= songs.length) dNumber = songs.length-1;
+	playAudio(songs[dNumber], true);
+	dNumber = ''; }
+
+document.body.onkeyup = function(e) {
+	// e.which for unicode apparently
+	var k = String.fromCharCode(e.which || e.keyCode).toLowerCase();
+	if(k==' ' || k=='\r') playAudio(activeSong, false);
+	else if(k=='0'||k=='1'||k=='2'||k=='3'||k=='4'||
+	   k=='5'||k=='6'||k=='7'||k=='8'||k=='9') {
+		setTimeout(dComplete, dDelay);
+   	dDate = +new Date();
+	  dNumber += k; }
+	else if(k=='y') highlightUI(0);
+	else if(k=='b') highlightUI(1);
+	else if(k=='t') highlightUI(2);
+	else if(k=='s') highlightUI(3); }
+
+// set initial song-sheet
+image.src = songs[0].getElementsByTagName('audio')[0].src.replace(/\.mp3$/, ".jpg");
+
+window.onload = window.onresize = function() {
+	// auto-hide song names, if they overlap songsheet
+	if(image.offsetLeft==0 && activeSong!=songs[0]) {
+		uis[3].className = 'active'; songsBox.className = 'songs hide'; }
+	else {
+		uis[3].className = '';       songsBox.className = 'songs';
+	// make sure viewport is wide enough for content
+	document.getElementsByClassName('viewport')[0].setAttribute('content','user-scalable=no, width='+
+		(Math.max(document.documentElement.clientWidth, window.innerWidth || 0) > 640?'device-width':'640'));	} };
+</script></body></html>
