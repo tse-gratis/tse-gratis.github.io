@@ -152,8 +152,8 @@ void main() { mainImage(gl_FragColor, gl_FragCoord.xy); }
 "use strict";
 var canvas, gl, program,
     iResolution, iTime;
-try{
 (function() {
+/*
 	function createShader(gl, type, source) {
 		var shader = gl.createShader(type);
 		gl.shaderSource(shader, source);
@@ -225,7 +225,7 @@ try{
 			return; }
 		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.15, 500));
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
-		requestAnimationFrame(initialdraw); })();
+		requestAnimationFrame(initialdraw); })();*/
 
 
 	var enlarge = 150;
@@ -262,5 +262,4 @@ try{
 			: k>=65 && k<=90? k-65     // a-z
 			: k==37         ? slide-1  // left, right
 			: k==39         ? slide+1 : slide); } })();
-} catch(e) { alert(e); }
 </script></body></html>
