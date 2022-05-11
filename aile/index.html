@@ -40,7 +40,7 @@ div.slide {
 
 table.ui {
 	display:none;
-	position:absolute;
+	position:fixed;
 	bottom:0px; right:0px;
 	border-spacing:15px;
 	user-select:none; }
@@ -59,7 +59,7 @@ table.ui {
 </style></head><body>
 
 <div class="slide">
-	<h1><big>1.</big> Authentic brands</h1>
+	<h1><big>1.</big> Authentic brand</h1>
 	<p>Being the beloved</p></div>
 
 <div class="slide">
@@ -153,7 +153,7 @@ void main() { mainImage(gl_FragColor, gl_FragCoord.xy); }
 var canvas, gl, program,
     iResolution, iTime;
 (function() {
-/*
+
 	function createShader(gl, type, source) {
 		var shader = gl.createShader(type);
 		gl.shaderSource(shader, source);
@@ -225,7 +225,7 @@ var canvas, gl, program,
 			return; }
 		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.15, 500));
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
-		requestAnimationFrame(initialdraw); })();*/
+		requestAnimationFrame(initialdraw); })();
 
 
 	var enlarge = 150;
@@ -241,7 +241,7 @@ var canvas, gl, program,
 		return s; }
 	function gotoSlide(s) {
 		s = slideValidate(s);
-		//if(!isDraw && s!=slide) draw();
+		if(!isDraw && s!=slide) draw();
 		location.hash = slide = s; }
 	window.onload = window.onhashchange = function() {
 		var hash = location.hash; var s = 0;
