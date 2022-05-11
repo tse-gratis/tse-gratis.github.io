@@ -179,9 +179,8 @@ var canvas, gl, program,
 	if(!program) return;
 	gl.useProgram(program);
 
-	try {
 	alert(1);
-	gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+	/*gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
 	alert(2);
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, 1, 1, 1, -1, -1, -1, -1, 1, 1, 1, -1]), gl.STATIC_DRAW);
 	alert(7);
@@ -193,9 +192,7 @@ var canvas, gl, program,
 	alert(5);
 	iResolution = gl.getUniformLocation(program, "iResolution");
 	alert(6);
-	iTime       = gl.getUniformLocation(program, "iTime");
-	} catch(e) {
-		alert(e); }
+	iTime       = gl.getUniformLocation(program, "iTime");*/
 
 	/*var totalEase = 0.6, isScrolled = false, isDraw = true, startTime = 0;
 	function easeOutExpo(t, b, c, d) {
