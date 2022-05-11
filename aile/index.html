@@ -2,9 +2,9 @@
 <html><head><meta charset="utf-8"><title>
 	sevgilinin aile
 </title>
-<link rel="icon" href="https://gratis.gitlab.io/favicon-32.ico" sizes="32x32">
+<link rel="icon" href="https://tse.gratis/heart-32.ico" sizes="32x32">
 <meta http-equiv="imagetoolbar" content="no">
-<meta name="viewport" content="width=928">
+<meta name="viewport" content="width=device-width, user-scalable=no">
 <style>
 @import url(https://fonts.googleapis.com/css?family=Scope+One&display=swap);
 html, body {
@@ -59,7 +59,7 @@ table.ui {
 </style></head><body>
 
 <div class="slide">
-	<h1><big>1.</big> Authentic brandk</h1>
+	<h1><big>1.</big> Authentic brand</h1>
 	<p>Being the beloved</p></div>
 
 <div class="slide">
@@ -171,12 +171,12 @@ var canvas, gl, program,
 		if(gl.getProgramParameter(program, gl.LINK_STATUS)) return program;
 		console.log(gl.getProgramInfoLog(program));
 		gl.deleteProgram(program); }
-	/*canvas = document.getElementsByClassName("backgroundShader")[0];
+	canvas = document.getElementsByClassName("backgroundShader")[0];
 	gl = canvas.getContext("webgl");
 	program = createProgram(gl,
 		createShader(gl, gl.VERTEX_SHADER, 'attribute vec4 pos; uniform vec2 iResolution; uniform float iTime; void main() { gl_Position = pos; }'),
 		createShader(gl, gl.FRAGMENT_SHADER, document.getElementsByClassName("fragmentShader")[0].text));
-	if(!program) return;
+	/*if(!program) return;
 	gl.useProgram(program);
 
 	gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
