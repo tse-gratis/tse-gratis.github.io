@@ -174,7 +174,7 @@ var canvas, gl, program,
 	canvas = document.getElementsByClassName("backgroundShader")[0];
 	gl = canvas.getContext("webgl");
 	program = createProgram(gl,
-		createShader(gl, gl.VERTEX_SHADER, 'attribute vec4 pos; uniform lowp vec2 iResolution; uniform lowp float iTime; void main() { gl_Position = pos; }'),
+		createShader(gl, gl.VERTEX_SHADER, 'precision lowp float; attribute vec4 pos; uniform vec2 iResolution; uniform float iTime; void main() { gl_Position = pos; }'),
 		createShader(gl, gl.FRAGMENT_SHADER, document.getElementsByClassName("fragmentShader")[0].text));
 	if(!program) return;
 	gl.useProgram(program);
