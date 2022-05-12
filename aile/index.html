@@ -88,7 +88,6 @@ table.ui {
 <canvas class="backgroundShader"></canvas>
 <script class="fragmentShader" type="notjs">
 precision highp float;
-uniform float iResolution;
 uniform float iTime;
 
 
@@ -128,7 +127,7 @@ vec3 hsb2rgb(in vec3 c, in vec3 col) {
 	rgb = rgb*rgb*(3.0-2.0*rgb);
 	return c.z * mix(vec3(1.0), rgb, c.y); }
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-	vec2 uv = fragCoord/iResolution;
+	vec2 uv = fragCoord/350.;
 	
 	float f = fbm(1.1 * vec2(fragCoord.x*0.01, fragCoord.y*0.01))*0.001;
 	float g = fbm(1.1 * vec2(fragCoord.x*0.1, fragCoord.y*0.1))*0.1;
@@ -150,8 +149,7 @@ void main() { mainImage(gl_FragColor, gl_FragCoord.xy); }
 
 <script>
 "use strict";
-var canvas, gl, program,
-    iResolution, iTime;
+var canvas, gl, program, iTime;
 (function() {
 	function createShader(gl, type, source) {
 		var shader = gl.createShader(type);
@@ -173,7 +171,7 @@ var canvas, gl, program,
 	canvas = document.getElementsByClassName("backgroundShader")[0];
 	gl = canvas.getContext("webgl");
 	program = createProgram(gl,
-		createShader(gl, gl.VERTEX_SHADER, 'precision highp float; attribute vec4 pos; uniform float iResolution; uniform float iTime; void main() { gl_Position = pos; }'),
+		createShader(gl, gl.VERTEX_SHADER, 'precision highp float; attribute vec4 pos; uniform float iTime; void main() { gl_Position = pos; }'),
 		createShader(gl, gl.FRAGMENT_SHADER, document.getElementsByClassName("fragmentShader")[0].text));
 	if(!program) return;
 	gl.useProgram(program);
@@ -183,8 +181,7 @@ var canvas, gl, program,
 	var positionAttr = gl.getAttribLocation(program, "pos");
 	gl.vertexAttribPointer(positionAttr, 2, gl.FLOAT, false, 0, 0);
 	gl.enableVertexAttribArray(positionAttr);
-	iResolution = gl.getUniformLocation(program, "iResolution");
-	iTime       = gl.getUniformLocation(program, "iTime");
+	iTime = gl.getUniformLocation(program, "iTime");
 
 	var totalEase = 0.6, isScrolled = false, isDraw = true, timeStart = 0, timeDiff;
 
@@ -207,12 +204,9 @@ var canvas, gl, program,
 		requestAnimationFrame(draw); }
 	function wh() {
 		var w = window.innerWidth, h = window.innerHeight;
-		if(w<h*1.5) w = h*1.5; // maintain rough ratio
-		//else if(h<w*0.5) h = w*0.5;
-		var d = 2000;
-		h = d*h / w; w = d; // maintain scale
-		gl.viewport(0, 0, canvas.width = w / 3, canvas.height = h / 3); // upscale for performance
-		gl.uniform1f(iResolution, 600); // not really needed
+		if(w<h) { var d = h / w; w = 500; h = w*d; }
+		else    { var d = w / h; h = 500; w = h*d; }
+		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
 		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); }
 	window.onresize = wh;
 	window.onscroll = function() { isScrolled = true; if(!isDraw) draw(); }
@@ -246,9 +240,7 @@ var canvas, gl, program,
 		if(s>slides.length) return slides.length;
 		return s; }
 	function gotoSlide(s) {
-		alert(s);
 		s = slideValidate(s);
-		alert(s);
 		if(!isDraw && s!=slide) draw();
 		location.hash = slide = s; }
 	window.onload = window.onhashchange = function() {
@@ -259,7 +251,6 @@ var canvas, gl, program,
 		var n = -1; while(++n<slides.length)
 			slides[n].style.cssText = n==slide-1?'':'display:none'; }
 	window.onclick = function(e) {
-		alert('hi');
 		gotoSlide((window.event || e).clientY > window.innerHeight / 2? slide+1 : slide-1); }
 	window.onkeydown = function(e) {
 		e = window.event || e;
