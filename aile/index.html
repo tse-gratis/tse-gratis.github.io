@@ -199,7 +199,7 @@ var canvas, gl, program,
 		if(isScrolled || time-timeDiff>32 || diff>=500) {
 			isScrolled = false;
 			totalEase += 0.02;
-			if(diff>=500) { isDraw = false; timeStart = 0; return; }
+			if(time-timeDiff>32 || diff>=500) { isDraw = false; timeStart = 0; return; }
 			timeStart = time; diff = 0; }
 		timeDiff = time;
 		isDraw = true;
