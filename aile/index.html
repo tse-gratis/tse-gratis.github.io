@@ -4,7 +4,8 @@
 </title>
 <link rel="icon" href="https://tse.gratis/heart-32.ico" sizes="32x32"/>
 <meta http-equiv="imagetoolbar" content="no"/>
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=device-width, height=device-height"/>
+<!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=device-width, height=device-height"/>-->
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=900"/>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Scope+One&display=swap);
 html, body {
@@ -16,7 +17,7 @@ img { border:none; }
 a:hover { text-shadow:0px 0px 3px #999; }
 
 div.slide {
-	margin:1em 0px;
+	margin:1em 0px 10em 0px;
 	background-color:rgba(255,255,255,0.7); }
 .slide * { padding:0px 50px; }
 .slide * * { padding:0px; }
@@ -185,22 +186,25 @@ var canvas, gl, program,
 	iResolution = gl.getUniformLocation(program, "iResolution");
 	iTime       = gl.getUniformLocation(program, "iTime");
 
-	var totalEase = 0.6, isScrolled = false, isDraw = true, startTime = 0;
+	var totalEase = 0.6, isScrolled = false, isDraw = true, timeStart = 0, timeDiff;
+
 	function easeOutExpo(t, b, c, d) {
 		t /= d; return -c * t*(t-2) + b;
 		return (t == d) ? b + c : b-c * (Math.pow(2, (d- t) / d)); }
 	function draw(time) {
 		if(!time) time = (window.performance || Date).now();
-		if(!startTime) startTime = time;
-		var diff = time - startTime;
+		if(!timeStart) timeStart = timeDiff = time;
+		var diff = time - timeStart;
 		if(isScrolled || diff>=500) {
 			isScrolled = false;
 			totalEase += 0.02;
-			if(diff>=500) { isDraw = false; startTime = 0; return; }
-			startTime = time; diff = 0; }
+			if(diff>=500) { isDraw = false; timeStart = 0; return; }
+			timeStart = time; diff = 0; }
 		isDraw = true;
 		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.02, 500));
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
+		if(time-timeDiff>32) return;
+		timeDiff = time;
 		requestAnimationFrame(draw); }
 	function wh() {
 		var w = window.innerWidth, h = window.innerHeight;
@@ -214,15 +218,17 @@ var canvas, gl, program,
 	wh();
 	(function initialdraw(time) {
 		if(!time) time = (window.performance || Date).now();
-		if(!startTime) startTime = time;
-		var diff = time - startTime;
+		if(!timeStart) timeStart = timeDiff = time;
+		var diff = time - timeStart;
 		if(diff>500) {
 			isDraw = false;
 			totalEase+=0.15;
-			startTime = 0; diff = 0;
+			timeStart = 0; diff = 0;
 			return; }
 		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.15, 500));
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
+		if(time-timeDiff>32) return;
+		timeDiff = time;
 		requestAnimationFrame(initialdraw); })();
 
 
@@ -239,7 +245,9 @@ var canvas, gl, program,
 		if(s>slides.length) return slides.length;
 		return s; }
 	function gotoSlide(s) {
+		alert(s);
 		s = slideValidate(s);
+		alert(s);
 		if(!isDraw && s!=slide) draw();
 		location.hash = slide = s; }
 	window.onload = window.onhashchange = function() {
@@ -250,6 +258,7 @@ var canvas, gl, program,
 		var n = -1; while(++n<slides.length)
 			slides[n].style.cssText = n==slide-1?'':'display:none'; }
 	window.onclick = function(e) {
+		alert('hi');
 		gotoSlide((window.event || e).clientY > window.innerHeight / 2? slide+1 : slide-1); }
 	window.onkeydown = function(e) {
 		e = window.event || e;
