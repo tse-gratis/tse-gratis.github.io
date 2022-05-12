@@ -10,7 +10,7 @@
 html, body {
 	margin:0px; font-family:'Scope One', Georgia, serif; font-size:150%;
 	text-shadow:white 0px 0px 7px, white 2px 2px 10px; }
-canvas     { display:block; position:fixed; top:0px; left:0px; z-index:-9999; }
+canvas     { display:block; position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:-9999; }
 
 img { border:none; }
 a:hover { text-shadow:0px 0px 3px #999; }
@@ -84,10 +84,10 @@ table.ui {
 	<td onclick="enlargeFont( 10)">+</td>
 	<td onclick="enlargeFont(-10)">-</td></tr></table>
 
-<canvas class="backgroundShader" width="0" height="0"></canvas>
+<canvas class="backgroundShader"></canvas>
 <script class="fragmentShader" type="notjs">
 precision highp float;
-uniform vec2 iResolution;
+uniform float iResolution;
 uniform float iTime;
 
 
@@ -127,7 +127,7 @@ vec3 hsb2rgb(in vec3 c, in vec3 col) {
 	rgb = rgb*rgb*(3.0-2.0*rgb);
 	return c.z * mix(vec3(1.0), rgb, c.y); }
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-	vec2 uv = fragCoord/iResolution.y;
+	vec2 uv = fragCoord/iResolution;
 	
 	float f = fbm(1.1 * vec2(fragCoord.x*0.01, fragCoord.y*0.01))*0.001;
 	float g = fbm(1.1 * vec2(fragCoord.x*0.1, fragCoord.y*0.1))*0.1;
@@ -172,7 +172,7 @@ var canvas, gl, program,
 	canvas = document.getElementsByClassName("backgroundShader")[0];
 	gl = canvas.getContext("webgl");
 	program = createProgram(gl,
-		createShader(gl, gl.VERTEX_SHADER, 'precision highp float; attribute vec4 pos; uniform vec2 iResolution; uniform float iTime; void main() { gl_Position = pos; }'),
+		createShader(gl, gl.VERTEX_SHADER, 'precision highp float; attribute vec4 pos; uniform float iResolution; uniform float iTime; void main() { gl_Position = pos; }'),
 		createShader(gl, gl.FRAGMENT_SHADER, document.getElementsByClassName("fragmentShader")[0].text));
 	if(!program) return;
 	gl.useProgram(program);
@@ -206,10 +206,12 @@ var canvas, gl, program,
 		requestAnimationFrame(draw); }
 	function wh() {
 		var w = window.innerWidth, h = window.innerHeight;
-		     if(w<h*1.5) w = h*1.5;
+		     if(w<h*1.5) w = h*1.5; // maintain rough ratio
 		else if(h<w*0.5) h = w*0.5;
-		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
-		gl.uniform2fv(iResolution, [w, h]);
+		var d = 2000;
+		h = d*h / w; w = d; // maintain scale
+		gl.viewport(0, 0, canvas.width = w / 3, canvas.height = h / 3); // upscale for performance
+		gl.uniform1f(iResolution, 600); // not really needed
 		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); }
 	window.onresize = wh;
 	window.onscroll = function() { isScrolled = true; if(!isDraw) draw(); }
