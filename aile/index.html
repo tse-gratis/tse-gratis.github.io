@@ -4,7 +4,7 @@
 </title>
 <link rel="icon" href="https://tse.gratis/heart-32.ico" sizes="32x32"/>
 <meta http-equiv="imagetoolbar" content="no"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=device-width, height=device-height"/>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Scope+One&display=swap);
 html, body {
@@ -152,7 +152,6 @@ void main() { mainImage(gl_FragColor, gl_FragCoord.xy); }
 var canvas, gl, program,
     iResolution, iTime;
 (function() {
-
 	function createShader(gl, type, source) {
 		var shader = gl.createShader(type);
 		gl.shaderSource(shader, source);
@@ -196,7 +195,7 @@ var canvas, gl, program,
 		var diff = time - startTime;
 		if(isScrolled || diff>=500) {
 			isScrolled = false;
-			totalEase += easeOutExpo(diff, 0, 0.02, 500);
+			totalEase += 0.02;
 			if(diff>=500) { isDraw = false; startTime = 0; return; }
 			startTime = time; diff = 0; }
 		isDraw = true;
@@ -225,6 +224,7 @@ var canvas, gl, program,
 		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.15, 500));
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
 		requestAnimationFrame(initialdraw); })();
+
 
 
 	var enlarge = 150;
