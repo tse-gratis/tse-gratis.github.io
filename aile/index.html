@@ -4,7 +4,8 @@
 </title>
 <link rel="icon" href="https://tse.gratis/heart-32.ico" sizes="32x32"/>
 <meta http-equiv="imagetoolbar" content="no"/>
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=device-width, height=device-height"/>
+<!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=1200, height=device-height"/>-->
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Scope+One&display=swap);
 html, body {
@@ -194,11 +195,11 @@ var canvas, gl, program,
 		if(!time) time = (window.performance || Date).now();
 		if(!timeStart) timeStart = timeDiff = time;
 		var diff = time - timeStart;
-		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.005, 500));
+		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.001, 500));
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
 		if(isScrolled || time-timeDiff>32 || diff>=500) {
 			isScrolled = false;
-			totalEase += 0.005;
+			totalEase += 0.001;
 			if(time-timeDiff>32 || diff>=500) { isDraw = false; timeStart = 0; return; }
 			timeStart = time; diff = 0; }
 		timeDiff = time;
@@ -220,11 +221,11 @@ var canvas, gl, program,
 		if(!time) time = (window.performance || Date).now();
 		if(!timeStart) timeStart = timeDiff = time;
 		var diff = time - timeStart;
-		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.3, 500));
+		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.1, 500));
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
-		if(time-timeDiff>32 || diff>500) {
+		if(time-timeDiff>132 || diff>500) {
 			isDraw = false;
-			totalEase+=0.3;
+			totalEase+=0.1;
 			timeStart = 0; diff = 0;
 			return; }
 		timeDiff = time;
