@@ -4,8 +4,7 @@
 </title>
 <link rel="icon" href="https://tse.gratis/heart-32.ico" sizes="32x32"/>
 <meta http-equiv="imagetoolbar" content="no"/>
-<!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=device-width, height=device-height"/>-->
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=900"/>
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimum-scale=1, width=device-width, height=device-height"/>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Scope+One&display=swap);
 html, body {
@@ -238,6 +237,7 @@ var canvas, gl, program,
 		window.event.stopPropagation();
 		document.body.style.cssText = 'font-size:'+(enlarge+=diff)+'%'; }
 	document.getElementsByClassName('ui')[0].style.cssText = 'display:block';
+	return;
 	var slides = document.getElementsByClassName('slide');
 	var slide = 1;
 	function slideValidate(s) {
