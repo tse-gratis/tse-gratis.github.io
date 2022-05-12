@@ -127,7 +127,7 @@ vec3 hsb2rgb(in vec3 c, in vec3 col) {
 	rgb = rgb*rgb*(3.0-2.0*rgb);
 	return c.z * mix(vec3(1.0), rgb, c.y); }
 void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-	vec2 uv = fragCoord/350.;
+	vec2 uv = vec2(fragCoord.x, 1.-fragCoord.y)/500.;
 	
 	float f = fbm(1.1 * vec2(fragCoord.x*0.01, fragCoord.y*0.01))*0.001;
 	float g = fbm(1.1 * vec2(fragCoord.x*0.1, fragCoord.y*0.1))*0.1;
@@ -173,6 +173,10 @@ var canvas, gl, program, iTime;
 	program = createProgram(gl,
 		createShader(gl, gl.VERTEX_SHADER, 'precision highp float; attribute vec4 pos; uniform float iTime; void main() { gl_Position = pos; }'),
 		createShader(gl, gl.FRAGMENT_SHADER, document.getElementsByClassName("fragmentShader")[0].text));
+
+	/*program = createProgram(gl,
+		createShader(gl, gl.VERTEX_SHADER, 'precision highp float; attribute vec4 pos; uniform float iTime; void main() { gl_Position = mat4(1.,-1.,0.,0.,   0.,0.,0.,0.,   0.,0.,1.,0.,  0.,0.,0.,1.)*pos; }'),
+		createShader(gl, gl.FRAGMENT_SHADER, document.getElementsByClassName("fragmentShader")[0].text));*/
 	if(!program) return;
 	gl.useProgram(program);
 	gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
@@ -183,8 +187,14 @@ var canvas, gl, program, iTime;
 	gl.enableVertexAttribArray(positionAttr);
 	iTime = gl.getUniformLocation(program, "iTime");
 
-	var totalEase = 0.6, isScrolled = false, isDraw = true, timeStart = 0, timeDiff;
+	(window.onresize = function() {
+		var w = window.innerWidth, h = window.innerHeight;
+		if(w<h) { var d = h / w; w = 500; h = w*d; }
+		else    { var d = w / h; h = 500; w = h*d; }
+		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
+		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); })();
 
+	var totalEase = 0.6, isScrolled = false, isDraw = true, timeStart = 0, timeDiff;
 	function easeOutExpo(t, b, c, d) {
 		t /= d; return -c * t*(t-2) + b;
 		return (t == d) ? b + c : b-c * (Math.pow(2, (d- t) / d)); }
@@ -202,18 +212,7 @@ var canvas, gl, program, iTime;
 		timeDiff = time;
 		isDraw = true;
 		requestAnimationFrame(draw); }
-	var w = 0, h = 0;
-	function wh() {
-		// avoid mobile urlbar appearance from changing ratios
-		if(w==window.innerWidth && Math.abs(h-window.innerHeight)<200) return;
-		w = window.innerWidth; h = window.innerHeight;
-		if(w<h) { var d = h / w; w = 500; h = w*d; }
-		else    { var d = w / h; h = 500; w = h*d; }
-		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
-		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); }
-	window.onresize = wh;
-	window.onscroll = function() { isScrolled = true; if(!isDraw) draw(); }
-	wh();
+	window.onscroll = function() { isScrolled = true; if(!isDraw) draw(); };
 	(function initialdraw(time) {
 		if(!time) time = (window.performance || Date).now();
 		if(!timeStart) timeStart = timeDiff = time;
