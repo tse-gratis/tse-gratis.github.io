@@ -59,7 +59,7 @@ table.ui {
 </style></head><body>
 
 <div class="slide">
-	<h1><big>1.</big> Authentic brands</h1>
+	<h1><big>1.</big> Authentic brand...</h1>
 	<p>Being the beloved</p></div>
 
 <div class="slide">
@@ -86,7 +86,7 @@ table.ui {
 
 <canvas class="backgroundShader" width="0" height="0"></canvas>
 <script class="fragmentShader" type="notjs">
-precision highp float;
+precision mediump float;
 uniform vec2 iResolution;
 uniform float iTime;
 
@@ -140,8 +140,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
 		+dista*1.1,1.5,0.1),vec3(0.,1.,2.));
 	vec3 bands=hsb2rgb(vec3(distb*(PI / 6.)-iTime+g+h,1.,1.),vec3(0.0,4.0,2.0));
 
-	fragColor = vec4(blend*10.+0.9*bands/0.5,1.0);
-	fragColor = vec4(blend*10.+.9*bands+0.5,1.0);
+	fragColor = vec4(blend*10.+0.9*bands+0.5,1.0);
 	//fragColor = vec4(blend*10.0,1.0);
 	//fragColor = vec4(bands,1.0);
 }
@@ -174,7 +173,7 @@ var canvas, gl, program,
 	canvas = document.getElementsByClassName("backgroundShader")[0];
 	gl = canvas.getContext("webgl");
 	program = createProgram(gl,
-		createShader(gl, gl.VERTEX_SHADER, 'precision highp float; attribute vec4 pos; uniform vec2 iResolution; uniform float iTime; void main() { gl_Position = pos; }'),
+		createShader(gl, gl.VERTEX_SHADER, 'precision mediump float; attribute vec4 pos; uniform vec2 iResolution; uniform float iTime; void main() { gl_Position = pos; }'),
 		createShader(gl, gl.FRAGMENT_SHADER, document.getElementsByClassName("fragmentShader")[0].text));
 	if(!program) return;
 	gl.useProgram(program);
