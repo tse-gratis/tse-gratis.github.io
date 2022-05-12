@@ -184,6 +184,7 @@ var canvas, gl, program, iTime;
 	iTime = gl.getUniformLocation(program, "iTime");
 
 	(window.onresize = function() {
+	return;
 		var w = window.innerWidth, h = window.innerHeight;
 		if(w<h) { var d = h / w; w = 500; h = w*d; }
 		else    { var d = w / h; h = 500; w = h*d; }
