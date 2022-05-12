@@ -194,11 +194,11 @@ var canvas, gl, program,
 		if(!time) time = (window.performance || Date).now();
 		if(!timeStart) timeStart = timeDiff = time;
 		var diff = time - timeStart;
-		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.02, 500));
+		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.005, 500));
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
 		if(isScrolled || time-timeDiff>32 || diff>=500) {
 			isScrolled = false;
-			totalEase += 0.02;
+			totalEase += 0.005;
 			if(time-timeDiff>32 || diff>=500) { isDraw = false; timeStart = 0; return; }
 			timeStart = time; diff = 0; }
 		timeDiff = time;
@@ -206,8 +206,8 @@ var canvas, gl, program,
 		requestAnimationFrame(draw); }
 	function wh() {
 		var w = window.innerWidth, h = window.innerHeight;
-		     if(w<h*1.5) w = h*1.5; // maintain rough ratio
-		else if(h<w*0.5) h = w*0.5;
+		if(w<h*1.5) w = h*1.5; // maintain rough ratio
+		//else if(h<w*0.5) h = w*0.5;
 		var d = 2000;
 		h = d*h / w; w = d; // maintain scale
 		gl.viewport(0, 0, canvas.width = w / 3, canvas.height = h / 3); // upscale for performance
@@ -220,11 +220,11 @@ var canvas, gl, program,
 		if(!time) time = (window.performance || Date).now();
 		if(!timeStart) timeStart = timeDiff = time;
 		var diff = time - timeStart;
-		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.15, 500));
+		gl.uniform1f(iTime, totalEase+easeOutExpo(diff, 0, 0.3, 500));
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
 		if(time-timeDiff>32 || diff>500) {
 			isDraw = false;
-			totalEase+=0.15;
+			totalEase+=0.3;
 			timeStart = 0; diff = 0;
 			return; }
 		timeDiff = time;
