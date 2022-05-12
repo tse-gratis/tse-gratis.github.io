@@ -202,14 +202,15 @@ var canvas, gl, program, iTime;
 		timeDiff = time;
 		isDraw = true;
 		requestAnimationFrame(draw); }
+	var w = 0, h = 0;
 	function wh() {
-		var w = window.innerWidth, h = window.innerHeight;
+		// avoid mobile urlbar appearance from changing ratios
+		if(w==window.innerWidth && Math.abs(h-window.innerHeight)<200) return;
+		w = window.innerWidth; h = window.innerHeight;
 		if(w<h) { var d = h / w; w = 500; h = w*d; }
 		else    { var d = w / h; h = 500; w = h*d; }
-		// avoid mobile urlbar appearance from changing ratios
-		if(Math.abs(h-canvas.height)<200) return;
 		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
-		gl.drawArrays(gl.TRIANGLES, 0, 6); }
+		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); }
 	window.onresize = wh;
 	window.onscroll = function() { isScrolled = true; if(!isDraw) draw(); }
 	wh();
