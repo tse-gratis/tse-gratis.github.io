@@ -8,20 +8,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <style>
 @import url(https://fonts.googleapis.com/css?family=Scope+One&display=swap);
-html, body {
-	position:fixed; height:100%;
-	margin:0px; font-family:'Scope One', Georgia, serif; font-size:150%;
+html { overflow:hidden; }
+body {
+	position:fixed; height:100%; overflow-y:auto;
+	margin:0px; padding:0px; font-family:'Scope One', Georgia, serif; font-size:150%;
 	text-shadow:white 0px 0px 7px, white 2px 2px 10px; }
-canvas     { display:block; position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:-9999; }
-
-img { border:none; }
-a:hover { text-shadow:0px 0px 3px #999; }
-
+canvas     { position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:-9999; }
 div.scroll {
 	height:100%;
 	overflow-x:hidden;
 	overflow-y:auto; }
 div.slide {
+	width:101vw;
 	margin:1em 0px 10em 0px;
 	background-color:rgba(255,255,255,0.7); }
 .slide * { padding:0px 50px; }
@@ -62,7 +60,10 @@ table.ui {
 	box-shadow:5px 5px 10px 5px white inset; }
 .ui td:hover  { box-shadow: 0px  0px 10px 5px white inset; }
 .ui td:active { box-shadow:-5px -5px 10px 5px white inset; }
-</style></head><body><div class="scroll">
+
+img { border:none; }
+a:hover { text-shadow:0px 0px 3px #999; }
+</style></head><body>
 
 <div class="slide">
 	<h1><big>1.</big> Authentic brand.</h1>
@@ -86,7 +87,6 @@ table.ui {
 <div class="slide">
 	<h1><big>4.</big> Another example</h1></div>
 
-</div>
 <table class="ui"><tr>
 	<td onclick="enlargeFont( 10)">+</td>
 	<td onclick="enlargeFont(-10)">-</td></tr></table>
