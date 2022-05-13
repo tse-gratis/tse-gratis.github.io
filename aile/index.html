@@ -12,11 +12,12 @@
 	click to scroll to slide
 	*/
 @import url(https://fonts.googleapis.com/css?family=Scope+One&display=swap);
-html, body {
-	position:fixed; width:100%; height:100%; margin:0px;
-	font-family:'Scope One', Georgia, serif; font-size:150%;
+body {
+	width:100%; height:100%; margin:0px;
+	font-family:'Scope One', Georgia, serif; font-size:100%;
 	text-shadow:white 0px 0px 7px, white 2px 2px 10px; }
 canvas     { position:fixed; top:0px; left:0px; width:100%; height:100%; z-index:-9999; }
+html { padding:0px; margin:0px; }
 div.scroll {
 	position:absolute;
 	top:0.5px; bottom:0.5px;
@@ -24,10 +25,9 @@ div.scroll {
 	overflow-x:hidden;
 	overflow-y:auto; }
 div.slide {
-	width:100%;
 	margin:1em 0px 90vh 0px;
 	background-color:rgba(255,255,255,0.7); }
-.slide * { padding:0px 50px; width:100%; }
+.slide * { padding:0px 50px; }
 .slide * * { padding:0px; }
 .slide big {
 	position:relative; top:0.52ex;
@@ -72,7 +72,8 @@ a:hover { text-shadow:0px 0px 3px #999; }
 
 <div class="slide">
 	<h1><big>1.</big> Authentic brand</h1>
-	<p>Being the beloved</p></div>
+	<p>Being the beloved</p>
+	<p>Even if I am being poured out like water, I rejoice.  Everything within me rejoices.  I praise the LORD.  He is my master</p></div>
 
 <div class="slide">
 	<h1><big>2.</big> Boyunduruk kolaydır</h1>
