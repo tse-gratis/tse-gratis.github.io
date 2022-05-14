@@ -90,7 +90,7 @@ a:hover { text-shadow:0px 0px 3px #999; }
 <table class="ui"><tr>
 	<td onclick="enlargeFont( 10)">+</td>
 	<td onclick="enlargeFont(-10)">-</td></tr></table>
-<canvas class="backgroundShader"></canvas>
+<canvas class="backgroundShader" width="640" height="320"></canvas>
 <script class="fragmentShader" type="notjs">
 precision highp float;
 uniform float iTime;
@@ -188,13 +188,13 @@ var canvas, gl, program, iTime;
 	gl.enableVertexAttribArray(positionAttr);
 	iTime = gl.getUniformLocation(program, "iTime");
 
-	(window.onresize = function() {
+	/*(window.onresize = function() {
 		var w = window.innerWidth, h = window.innerHeight;
 		canvas.style.width = w; canvas.style.height = h;
 		if(w>h) { var d = h / w; w = 1000; h = w*d; }
 		else    { var d = w / h; h = 1000; w = h*d; }
 		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
-		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); })();
+		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); })();*/
 
 	var totalEase = 0.6, isScrolled = false, isDraw = true, timeStart = 0, timeDiff;
 	function easeOutExpo(t, b, c, d) {
