@@ -200,7 +200,7 @@ var canvas, gl, program, iTime;
 	gl.enableVertexAttribArray(positionAttr);
 	iTime = gl.getUniformLocation(program, "iTime");
 
-	(window.onresize = function() {
+	(function() {
 		var w = window.innerWidth, h = window.innerHeight;
 		if(w>h) { var d = h / w; w = 1000; h = w*d; }
 		else    { var d = w / h; h = 1000; w = h*d; }
