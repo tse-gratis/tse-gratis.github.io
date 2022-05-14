@@ -188,10 +188,12 @@ var canvas, gl, program, iTime;
 	gl.enableVertexAttribArray(positionAttr);
 	iTime = gl.getUniformLocation(program, "iTime");
 
+	var w = 0, h = 0;
 	(window.onresize = function() {
-		var w = window.innerWidth, h = window.innerHeight;
+		if(w==window.innerWidth && Math.abs(h-window.innerHeight)<200) return;
+		w = window.innerWidth; h = window.innerHeight;
 		if(w>h) { var d = h / w; w = Math.min(960, w); h = w*d; }
-		else    { var d = w / h; h = Math.min(960, w); w = h*d; }
+		else    { var d = w / h; h = Math.min(960, h); w = h*d; }
 		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
 		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); })();
 
