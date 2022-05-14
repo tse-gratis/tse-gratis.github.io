@@ -190,6 +190,7 @@ var canvas, gl, program, iTime;
 
 	var w = 0, h = 0;
 	(window.onresize = function() {
+		// avoid mobile adressbar hiding from doing resize flash
 		if(w==window.innerWidth && Math.abs(h-window.innerHeight)<200) return;
 		w = window.innerWidth; h = window.innerHeight;
 		if(w>h) { var d = h / w; w = Math.min(960, w); h = w*d; }
