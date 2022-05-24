@@ -1,5 +1,5 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>
+<html><head><meta charset="utf-8"/><title>
 	sevgilinin aile
 </title>
 <link rel="icon" href="https://tse.gratis/media/heart-32.ico" sizes="32x32"/>
@@ -63,19 +63,60 @@ a:hover { text-shadow:0px 0px 3px #999; }
 </style></head><body>
 
 <div class="slide">
+	<h1>Rabbin sofrası</h1>
+	<p>Bu nedenle, ey kardeşler, İsanın kanı sayesinde perdede, yani kendi bedeninde bize açtığı yeni ve diri yoldan kutsal yere girmeye cesaretimiz vardır İbraniler10.19</p>
+
+	<p>Size doğrusunu söyleyeyim, iman edenin sonsuz yaşamı vardır. Yaşam ekmeği Benim. Atalarınız çölde man yediler, yine de öldüler. Gökten inen öyle bir ekmek var ki, ondan yiyen ölmeyecek. Gökten inmiş olan diri ekmek Benim. Bu ekmekten yiyen sonsuza dek yaşayacak. Dünyanın yaşamı uğruna vereceğim ekmek de benim bedenimdir. Yuh6.47-51</p></div>
+
+
+<div class="slide">
+	<h1>Dua</h1>
+	<p>Yüceler Yücesinin barınağında oturan,
+Her Şeye Gücü Yetenin gölgesinde barınır.
+‹‹O benim sığınağım, kalemdir›› derim RAB için,
+‹‹Tanrımdır, Ona güvenirim.›› Mez91.1-2</p>
+
+	<p>Ama O bana, ‹‹Lütfum sana yeter. Çünkü gücüm, güçsüzlükte tamamlanır›› dedi. İşte, Mesihin gücü içimde bulunsun diye güçsüzlüklerimle sevinerek daha çok övüneceğim 2Kor12.9</p>
+
+	<p>Geyik akarsuları nasıl özlerse,
+Canım da seni öyle özler, ey Tanrı! yazılır.
+Canım Tanrıya, yaşayan Tanrıya susadı;
+Ne zaman görmeye gideceğim Tanrının yüzünü? Mez42.1-2</p>
+
+	<p>Ya RAB, içimden bir ses duydum:
+‹‹Yüzümü ara!›› dedin,
+İşte yüzünü arıyorum Mez27.8</p>
+
+	<p>Sürüsünü çoban gibi güdecek,
+Kollarına alacak kuzuları,
+Bağrında taşıyacak;
+Usul usul yol gösterecek emziklilere. Yeşaya40.11</p>
+
+	<p>Bu nedenle, ey kardeşler, İsanın kanı sayesinde perdede, yani kendi bedeninde bize açtığı yeni ve diri yoldan kutsal yere girmeye cesaretimiz vardır İbraniler10.19</p>
+
+	<p>Babanın bana verdiklerinin hepsi bana gelecek ve bana geleni asla kovmam. Çünkü kendi isteğimi değil, beni gönderenin isteğini yerine getirmek için gökten indim Yuh6.37-38</p></div>
+
+
+<div class="slide">
+	<h1>Bereketi</h1>
+	<p>Efesliler13.14-19</p></div>
+
+
+
+<!--<div class="slide">
 	<h1><big>1.</big> Onun Sevgili olmaya</h1>
 	<p>Bakın, Baba bizi o kadar çok seviyor ki, bize ‹‹Tanrının çocukları›› deniyor! Gerçekten de öyleyiz #1Yuh3.1</p>
 	<p>Bunun için, sevgili çocukları olarak Tanrıyı örnek alın. Mesih bizi nasıl sevdiyse ve bizim için kendisini güzel kokulu bir sunu ve kurban olarak nasıl Tanrıya sunduysa, siz de öylece sevgi yolunda yürüyün. #Efes5.1-2</p>
 	<p>Ona uzaktan görünüp şöyle dedim: Seni sonsuz bir sevgiyle sevdim, Bu nedenle sevecenlikle seni kendime çektim #Yeremya31.3</p></div>
 
 <div class="slide">
-	<h1><big>2.</big> Onu güvenmeye</h1>
+	<h1><big>2.</big> Ona güvenmeye</h1>
 	<p>İman yoluyla, lütufla kurtuldunuz. Bu sizin başarınız değil, Tanrının armağanıdır. Kimsenin övünmemesi için iyi işlerin ödülü değildir #Efes2.8-9</p>
 	<p>Kanım imanınızın sunusu ve hizmeti üzerine adak şarabı gibi dökülecek olsa da seviniyor, hepinizin sevincine katılıyorum #Filip2.17</p>
 	<p>Öz Oğlunu bile esirgemeyip Onu hepimiz için ölüme teslim eden Tanrı, Onunla birlikte bize her şeyi bağışlamayacak mı? #Rom8.32</p></div>
 
 <div class="slide">
-	<h1><big>3.</big> 1Yuhanna4.7-14</h1></div>
+	<h1><big>3.</big> 1Yuhanna4.7-14</h1></div>-->
 
 <table class="ui"><tr>
 	<td onclick="enlargeFont( 10)">+</td>
@@ -175,6 +216,7 @@ var canvas, gl, program, iTime;
 	gl.enableVertexAttribArray(positionAttr);
 	iTime = gl.getUniformLocation(program, "iTime");
 
+	var totalEase = 0.6, isScrolled = false, isDraw = true, timeStart = 0, timeDiff;
 	var w = 0, h = 0;
 	(window.onresize = function() {
 		// avoid mobile adressbar hiding from doing resize flash
@@ -185,7 +227,6 @@ var canvas, gl, program, iTime;
 		gl.viewport(0, 0, canvas.width = w, canvas.height = h);
 		if(!isDraw) gl.drawArrays(gl.TRIANGLES, 0, 6); })();
 
-	var totalEase = 0.6, isScrolled = false, isDraw = true, timeStart = 0, timeDiff;
 	function easeOutExpo(t, b, c, d) {
 		t /= d; return -c * t*(t-2) + b;
 		return (t == d) ? b + c : b-c * (Math.pow(2, (d- t) / d)); }
