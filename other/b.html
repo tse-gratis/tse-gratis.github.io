@@ -7,7 +7,9 @@
 <script>
 function setCookie(name,val) {
 	var d = new Date(); d.setTime(Date.now() + 60*60*24*30);
-	document.cookie = name+'='+val+'; expires='+d.toUTCString()+'; path=/'; }
+	console.log(name+'='+val+'; expires='+d.toUTCString()+'; path=/');
+	document.cookie = name+'='+val+'; domain=tse.gratis; expires='+d.toUTCString()+'; path=/';
+	console.log(document.cookie); }
 function getCookie(name) {
 	var cookies = document.cookie.split(';');
 	var n = -1; while(++n<cookies.length) if(cookies[n].indexOf(name+'=')==1)
@@ -16,7 +18,7 @@ function getCookie(name) {
 
 var fontSize = getCookie('fontSize') || 100;
 window.onload = function() { document.body.style.fontSize = fontSize+'%'; }
-function fontsize(by) { document.body.style.fontSize = (fontSize*=by)+'%'; setCookie('fontSize',fontSize); alert(fontSize,getCookie('fontSize'));}
+function fontsize(by) { document.body.style.fontSize = (fontSize*=by)+'%'; setCookie('fontSize',fontSize); alert(fontSize+'--'+getCookie('fontSize'));}
 </script>
 <style>
 center { max-width:51em; margin:0 auto; overflow:hidden;
