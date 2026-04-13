@@ -1,6 +1,5 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>'o. title o lineinner '</title>
-<link rel="icon" href="https://tse.gratis/heart-16.ico" sizes="16x16"/>
+<html><head><meta charset="utf-8"><title>prayer<link rel="icon" href="https://tse.gratis/heart-16.ico" sizes="16x16"/>
 <link rel="icon" href="https://tse.gratis/heart-32.ico" sizes="32x32"/>
 <meta http-equiv="imagetoolbar" content="no"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -16,7 +15,7 @@ function getCookie(name) {
 	return ''; }
 var fontSize = getCookie('fontSize') || 100;
 window.onload   = function() { document.body.style.fontSize = fontSize+'%'; }
-window.onunload = function() { setCookie('fontSize',fontSize); }
+window.onvisibilitychange = window.onpagehide = function() { setCookie('fontSize',fontSize); }
 function fontsize(by) { document.body.style.fontSize = (fontSize*=by)+'%'; }
 </script><style>
 center { max-width:51em; margin:0 auto; overflow:hidden;
