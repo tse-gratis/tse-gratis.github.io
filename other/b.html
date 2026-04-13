@@ -6,9 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <script>
 function setCookie(name,val) {
-	var d = new Date(); d.setTime(Date.now() + 60*60*24*30);
-	console.log(name+'='+val+'; expires='+d.toUTCString()+'; path=/');
-	document.cookie = name+'='+val+'; domain=tse.gratis; expires='+d.toUTCString()+'; path=/';
+	var e = new Date(); e.setTime(Date.now() + 60*60*24*30);
+	var d = window.location.hostname;
+	console.log(name+'='+val+'; '+(d=='localhost'?'':'domain='+d+'; ')+'expires='+e.toUTCString()+'; path=/');
+	document.cookie = name+'='+val+'; '+(d=='localhost'?'':'domain='+d+'; ')+'expires='+e.toUTCString()+'; path=/';
 	console.log(document.cookie); }
 function getCookie(name) {
 	var cookies = document.cookie.split(';');
@@ -54,7 +55,7 @@ a.button { display:inline-block; margin:2px; padding:1px; background-color:#ddf;
 <a href="#h19">blessing</a>
 <a href="#h20">intro</a>
 
-</nav><main><p>›</p>RESURRECTIOn Sunday
+</nav><main><p>›</p>RESURRECTIon Sunday
 <p>›</p>DavidJoseph
 	<p>›</p>two weeks, or a months time in afternoon ??  ps85,86,87 discussion
 	<p>›</p>come and visit Gypsy church close to Penllegaer 1830
