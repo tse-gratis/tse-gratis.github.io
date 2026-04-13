@@ -9,13 +9,13 @@ function setCookie(name,val) {
 	var d = window.location.hostname;
 	document.cookie = name+'='+val+'; '+(d=='localhost'?'':'domain='+d+'; ')+'expires='+e.toUTCString()+'; path=/'; }
 function getCookie(name) {
-	var cookies = document.cookie.split(';');
-	var n = -1; while(++n<cookies.length) if(cookies[n].indexOf(name+'=')==1)
+	var cookies = ('; '+document.cookie).split(';');
+	var n = 0; while(++n<cookies.length) if(cookies[n].indexOf(name+'=')==1)
 		return cookies[n].substring(name.length+2);
 	return ''; }
 var fontSize = getCookie('fontSize') || 100;
-window.onload   = function() { document.body.style.fontSize = fontSize+'%'; }
-window.onvisibilitychange = window.onpagehide = function() { setCookie('fontSize',fontSize); }
+window.onload     = function() { document.body.style.fontSize = fontSize+'%'; }
+window.onpagehide = window.onunload = function() { setCookie('fontSize',fontSize); }
 function fontsize(by) { document.body.style.fontSize = (fontSize*=by)+'%'; }
 </script><style>
 center { max-width:51em; margin:0 auto; overflow:hidden;
