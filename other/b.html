@@ -18,7 +18,7 @@ function getCookie(name) {
 
 var fontSize = getCookie('fontSize') || 100;
 window.onload = function() { document.body.style.fontSize = fontSize+'%'; }
-function fontsize(by) { document.body.style.fontSize = (fontSize*=by)+'%'; setCookie('fontSize',fontSize); alert(fontSize+'--'+getCookie('fontSize'));}
+function fontsize(by) { document.body.style.fontSize = (fontSize*=by)+'%'; setCookie('fontSize',fontSize); console.log(fontSize+'--'+getCookie('fontSize'));}
 </script>
 <style>
 center { max-width:51em; margin:0 auto; overflow:hidden;
