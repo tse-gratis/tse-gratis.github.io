@@ -84,10 +84,13 @@ form .ok, form .err, form .info {
 form .ok { color:#070; } form .info { color:#777; }
 form input.err { background-color:#fcc; }
 </style>
-</head><body>
-<h2><b>fun joyous peace</b></h2>
-
-<div class="tagline">a <b>small community chapel</b> where we want <b>relationship</b>, reflecting that for which <b>He gave up His life for you</b>; and go on an <b>adventure together as a family</b>, exploring His word and living it out as His <b>chosen, called, and beloved</b> — that’s you <img src="wink.png"/><img src="hand.png"/></div>
+</head><body><!--<h2><b>fun joyous peace</b></h2>
+--><!--
+contact form rhs margin collapses when screen width is low
+server side contact form handling
+pictures
+show to Margaret
+--><div class="tagline">a <b>small community chapel</b> where we want <b>relationship</b> reflecting that for which <b>He gave up His life for you</b>; and to go on an <b>adventure together as a family</b>, exploring His word and living it out as His <b>chosen, called, and beloved</b> — that’s you <img src="wink.png"/><img src="hand.png"/></div>
 
 
 <h4><b>Who</b> we are</h4>
@@ -97,7 +100,7 @@ It’s the faithfulness of people like these that makes us family, and we look f
 
 
 <h4><b>What</b> you can expect</h4>
-In our last meetings we painted bible verses on rocks, and stepped towards early church love feasts, with a meal in the middle of the hall
+In our last meetings we painted bible verses on pebbles, and stepped towards early church love feasts, with a meal in the middle of the hall
 
 Worship, communion, mixed with discussion, questions, art, meals, stories, based in the bible and prayer — meeting a Jesus who came and lived among us, laughed at our jokes, and took an interest in those He gave His life for
 
@@ -131,7 +134,8 @@ We give our thanks to the many years of faithful service that have brought us to
 
 
 <h4><b>Contact</b></h4>
-For instance, if you let us know you’re bringing children, we’d like to prepare something for them
+For instance, if you let us know you’re bringing children, we’d like to prepare for them
+
 <script>
 function get(progress, url, post, f) {
 	if(!navigator.onLine) return f(599, ''); // network timeout
@@ -176,9 +180,8 @@ function doForm() {
 						'<b class="ok">message delivered</b>' :
 						'<b class="err">message not sent</b>'; }); }
 	return false; }
-</script>
-<form><table>
-	<tr><td><label for="name">name&nbsp;</label></td><td>  <input id="name"  autocomplete="on"style="width:32ex"/></td></tr>
+</script><form><table>
+	<tr><td><label for="name">name&nbsp;</label></td><td>  <input id="name"  autocomplete="on" size="40"/></td></tr>
 	<tr><td><label for="email">email&nbsp;</label></td><td><input id="email" autocomplete="on"/></td></tr>
 	<tr><td><label for="phone">phone&nbsp;</label></td><td><input id="phone" autocomplete="on"/></td></tr>
 	<tr><td><label for="message">message&nbsp;</label></td><td>
@@ -186,5 +189,4 @@ function doForm() {
 	<tr><td colspan="2">
 		<span class="updates" style="display:inline-block"></span>
 		<a style="float:right;margin:0 0 8px 8px" onclick="return doForm()" href="" draggable="false" class="button">send</a></td></tr></table></form>
-
 </body></html>
