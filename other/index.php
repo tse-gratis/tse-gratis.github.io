@@ -1,6 +1,10 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>Pisgah Chapel</title>
+<html><head><meta charset="utf-8"><title>
+	home
+</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+
 <style>
 @import url(https://fonts.googleapis.com/css?family=Averia+Serif+Libre:300,400italic);
 html, body {
@@ -10,29 +14,69 @@ html, body {
 body { margin:0 auto; max-width:800px; padding:1ex; }
 form table { white-space:normal; margin:0 auto; }
 
-
-b {
+b, .grad1 {
+	background: linear-gradient(45deg, #69d, #74a);
+	-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+	font-size:120%;
+	/*font-size: 72px;
+	font-weight: 700;
+	font-family: Arial, sans-serif;*/ }
+p b {
 	font-size:100%; background:linear-gradient(45deg,#fd8,#dae);
 	-webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-q { color:#557; }
-table { border-collapse:collapse; border-spacing:0px; margin:0; }
+p {
+	display:inline; }
+q {
+	color:#557; }
+table {
+	border-collapse:collapse;
+	border-spacing:0px; margin:0; }
 a img { border-radius:2ex; }
 a img:hover { border:2px solid #070; padding:1px; margin:-3px; }
 
-h2, h4 { display:inline; }
-h2 b {
+h2, h3, h4 {
+	display:inline; }
+
+h2 b, h3 b {
 	background:linear-gradient(45deg,#fd8,#dae);
 	-webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
 h2 { font-size:260%; }
+h3 { font-size:260%; color:#dce; padding-left:1ex; }
 h4 { font-size:130%; color:#859; }
-.tagline { font-size:120%; }
-h4 b, .tagline b {
-	background: linear-gradient(45deg, #69d, #74a);
-	-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-	font-size:120%; }
-.tagline img { vertical-align:text-top; width:40px; }
 h4 b { font-size:130%; }
+
+h3 { /* for background wipe */
+  position: relative;
+  display: inline; }
+h3:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: .5em;
+  display: inline-block;
+  left: -3ex;
+  top: 0ex;
+  z-index: -1;
+  border: solid 3ex black;
+  border-color: #f5f5ff transparent transparent transparent;
+  border-radius: 100%;
+  /*clip-path: inset(0 0 50% 0);*/
+  transform: rotate(-2deg); }
+
+/*.box { position:relative; border-left:1ex solid red; }
+.box:after {
+	content:"";
+	position:absolute;
+	left:25%;
+	width:5em; height:5em;
+	z-index:-1;
+	border-radius:100%;
+	background: radial-gradient(#5555,#ffff);
+	border: solid 5px red;
+	transform: rotate(15deg); }*/
+.tagline { font-size:120%; }
+.tagline img { vertical-align:text-top; width:40px; }
 
 
 
@@ -87,52 +131,90 @@ form input.err { background-color:#fcc; }
 </head><body>
 <h2><b>fun joyous peace</b></h2>
 
-<div class="tagline">a <b>small community chapel</b> where we want <b>relationship</b>, reflecting that for which <b>He gave up His life for you</b>; and go on an <b>adventure together as a family</b>, exploring His word and living it out as His <b>chosen, called, and beloved</b> — that’s you <img src="wink.png"/><img src="hand.png"/></div>
+<div class="tagline">a <b>small community chapel</b> where we want <b>relationship</b>, reflecting that for which <b>He gave up His life for you</b>; and go on an <b>adventure together as a family</b>, exploring His word and living it out as His <b>chosen, called, and beloved</b> — that's you <img src="wink.png"/><img src="hand.png"/></div>
 
 
 <h4><b>Who</b> we are</h4>
-Our influences range from Gower, dairy farming, to Switzerland, Hong Kong, Ireland, to the edge of the Sahara
+the different people
 
-It’s the faithfulness of people like these that makes us family, and we look forward to sharing that with you
+<!--Samuel + Oi, who are they?-->
+
+Pictures?
 
 
 <h4><b>What</b> you can expect</h4>
-In our last meetings we painted bible verses on rocks, and stepped towards early church love feasts, with a meal in the middle of the hall
-
-Worship, communion, mixed with discussion, questions, art, meals, stories, based in the bible and prayer — meeting a Jesus who came and lived among us, laughed at our jokes, and took an interest in those He gave His life for
+<p>Worship, communion, mixed with discussion, questions, art, meals, stories, based in the bible and prayer — meeting a Jesus who came and lived amoung us, who laughed at our jokes, and took an interest in those He gave His life for
 
 And in response to Him coming to us; we also want to come to Him, and encounter the reverent and Holy
 
-Always with a LOT of space for newcomers, to as you prefer: gently listen, or eat the food and laugh at our jokes
+We welcome you to be involved; or if you prefer, to simply listen, and at your choosing, to open up, to us and to Him</p>
+<!--David
+antenna
+pictures for website
 
+history
+where we are now
+future
+
+value our history, trusting the Holy Spirit,
+
+fun lively service
+join in, youth, adults
+here is a little bit of content...
+
+the kinds of meetings we have-->
 
 <h4><b>What</b> we believe</h4>
-We emphasize not just hearing, but also living what we believe, which leads to lively and engaging meetings
+<p>We emphasize not just hearing, but also living what we believe, which leads to lively and engaging meetings
 
-We believe in being led by the LORD Jesus; that He is the safest place for our thoughts, feelings, hopes and dreams; and that He proved it, <q>God proves His love for us in this: While we were still sinners, Christ died for us. Therefore, since we have now been justified by His blood, how much more shall we be saved from wrath through Him!</q> Romans 5v8-9
+We believe in being led by the LORD Jesus; that He is the safest place for our thoughts, feelings, hopes and dreams; and that He proved it, <q>God proves His love for us in this: While we were still sinners, Christ died for us. Therefore, since we have now been justified by His blood, how much more shall we be saved from wrath through Him!</q> Romans5.8-9
 
-This has leds us from our 200year roots in Lady Barham and Meeting House Farm, to now, a Congregational + Pentecostal church (thanks Margaret + David). we fully support and affirm these aswell as the Apostle’s Creed
+This leads us from our 200yr roots in Lady Barham and Meeting House Farm, to now, a Congregational + Pentecostal church (thanks Margaret + David). we fully support and affirm these aswell as the Apostle's Creed
 
-We also emphasize real encounter with Him, and building each other up; to see each other grow into that to which Christ calls us
+We also emphasize real encounter with Him, and building each other up; to see each other grow into that to which Christ calls us</p>
 
 
 <h4><b>Where & when</b> we meet</h4>
-You’re very welcome to come and <b>visit</b>, or alternatively ask us to visit you through the contact form
+<p>You’re very welcome to come and <b>visit</b>, or alternatively ask us to visit you through the contact form
 
 Sunday 4pm   13th September, 11th October, 8th November, 6th December 2026
 
 Barham Centre, Chapel, Parkmill, Swansea SA3 2EQ
 
-<a href="https://www.google.com/maps/place/Barham+Centre,+Chapel+and+Community+Centre/@51.5831738,-4.1010832,701m/data=!3m1!1e3!4m6!3m5!1s0x486e8d6e54da3e35:0x130e45b92c72c659!8m2!3d51.5827538!4d-4.1004824!16s%2Fg%2F1w0j3mtv?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D"><img style="width:100%" src="map.jpg"/></a>
-
-
-<h4><b>Thanks</b> to</h4>
-We give our thanks to the many years of faithful service that have brought us to today, in particular <a href="https://seearoundbritain.com/venues/gower-burry-green-bethesda-chapel-open-daily-free-entry">Bethesda</a>, <a href="https://www.bethelpenclawdd.com/">Bethel</a>, Trinity, Immanuel Chapel, <a href="https://www.paracletechristianfellowship.org/">Paraclete</a>, <a href="https://gnl.church">Gower New Life</a>, Rev Grenville Fisher, Pastor Patrice Aka and others
+<a href="https://www.google.com/maps/place/Barham+Centre,+Chapel+and+Community+Centre/@51.5831738,-4.1010832,701m/data=!3m1!1e3!4m6!3m5!1s0x486e8d6e54da3e35:0x130e45b92c72c659!8m2!3d51.5827538!4d-4.1004824!16s%2Fg%2F1w0j3mtv?entry=ttu&g_ep=EgoyMDI2MDgxMi4wIKXMDSoASAFQAw%3D%3D"><img style="width:100%;" src="map.jpg"/></a></p>
 
 
 <h4><b>Contact</b></h4>
-For instance, if you let us know you’re bringing children, we’d like to prepare something for them
-<script>
+<?php
+// by Samuel
+$emailto = 'samuel@thimbleby.net';
+$bot     = '1250113667:AAE1Airb6-HOdrq5RFhPb4nCCP4YJf1P3Dk';
+$idA     = '102787536';  // me
+
+function telegramMsg($bot, $to, $msg, $notify) {
+	# curl -s -o /dev/null -X POST -H "Content-Type: application/json" -d "{\"chat_id\": \"$ID\", \"text\": \"test_message\", \"disable_notification\": false}" https://api.telegram.org/bot$TOKEN/sendMessage
+	$request=curl_init('https://api.telegram.org/bot'.$bot.'/sendMessage');
+	curl_setopt_array($request,[
+		CURLOPT_POST           => 1,
+		CURLOPT_RETURNTRANSFER => 1,
+		CURLOPT_POSTFIELDS     => http_build_query([
+			'chat_id'              =>  $to,
+			'text'                 =>  $msg,
+			'disable_notification' => !$notify])]);
+	$response = curl_exec($request);
+	return $response!==false && json_decode($response)->ok; }
+
+if($_SERVER['REQUEST_METHOD']==='POST') {
+	$data = json_decode(file_get_contents('php://input'));
+	$msg = "name: "      . $data->name  .
+		"\r\nemail: "      . $data->email .
+		"\r\nphone: "      . $data->phone .
+		"\r\nmessage:\r\n" . $data->message;
+	if(telegramMsg($bot, $idA, $msg, true)) http_response_code(200);
+	else http_response_code(400);
+	return; }
+
+?><script>
 function get(progress, url, post, f) {
 	if(!navigator.onLine) return f(599, ''); // network timeout
 	var wait = true;
@@ -176,8 +258,7 @@ function doForm() {
 						'<b class="ok">message delivered</b>' :
 						'<b class="err">message not sent</b>'; }); }
 	return false; }
-</script>
-<form><table>
+</script><form><table>
 	<tr><td><label for="name">name&nbsp;</label></td><td>  <input id="name"  autocomplete="on"style="width:32ex"/></td></tr>
 	<tr><td><label for="email">email&nbsp;</label></td><td><input id="email" autocomplete="on"/></td></tr>
 	<tr><td><label for="phone">phone&nbsp;</label></td><td><input id="phone" autocomplete="on"/></td></tr>
