@@ -156,6 +156,7 @@ function textareaResize(e) {
 	e.style = 'height:'+Math.min(e.scrollHeight+5,200)+'px'; }
 
 function doForm() {
+try{
 	var updates = document.getElementsByClassName('updates')[0];
 	updates.innerHTML = '';
 	if(document.getElementById('email').value == ''
@@ -174,7 +175,8 @@ function doForm() {
 					status==201?
 						'<b class="ok">message delivered</b>' :
 						'<b class="err">message not sent</b>'; }); }
-	return false; }
+	return false;
+} catch(e) { document.write(e); } }
 </script><form><table>
 	<tr><td><label for="name">name&nbsp;</label></td><td>  <input id="name"  autocomplete="on" size="40"/></td></tr>
 	<tr><td><label for="email">email&nbsp;</label></td><td><input id="email" autocomplete="on"/></td></tr>
