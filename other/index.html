@@ -203,9 +203,9 @@ try{
 		<span class="updates" style="display:inline-block"></span>
 		<a style="margin:0 0 8px 8px" onclick="return doForm()" href="" draggable="false" class="button">send</a></td></tr></table></form><!--
 
-stat counter, use ?visit to view it
 		--><script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=0e38f170965066414df744bb9f5c8beda6123717'></script><script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1623316/t/1"></script><script>
 window.onload = function() {
-	if(location.search==='?visit')
-		document.getElementsByClassName("counterimg")[0].style.cssText = 'display:block;border-radius:inherit;width:inherit'; }
+	if(location.search==='?visit') {
+		var i = document.getElementsByClassName("counterimg")[0];
+		i && i.style.cssText = 'display:block;border-radius:inherit;width:inherit'; }
 </script></body></html>
